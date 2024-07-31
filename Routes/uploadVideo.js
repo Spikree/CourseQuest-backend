@@ -51,7 +51,8 @@ uploadVideo.post('/', authenticateToken,upload.single('video'), async (req,res) 
     res.json({
       error: false,
       message: "video saved",
-      info: req.file.filename
+      info: req.file.filename,
+      videoId : newVideo._id
     })
   } catch (error) {
     res.json({

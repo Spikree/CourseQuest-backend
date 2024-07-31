@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import loginAccount from './Routes/loginAccount.js';
 import getUser from './Routes/getUser.js';
 import uploadVideo from './Routes/uploadVideo.js';
+import deleteVideo from './Routes/deleteVideo.js';
 
 dotenv.config();
 
@@ -30,6 +31,7 @@ app.use('/create-account',createAccount);
 app.use('/login-account',loginAccount);
 app.use('/get-user',getUser);
 app.use('/upload-video', uploadVideo);
+app.use('/delete-video', deleteVideo);
 
 app.listen(port, () => {
     console.log(`server listening on http://localhost:${port}`);
