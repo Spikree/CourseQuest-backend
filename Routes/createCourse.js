@@ -28,7 +28,7 @@ createCourse.post('/',authenticateToken,async(req,res) => {
 
     try {
         await course.save();
-        return res.status(200).json({error: false, message: "cource created sucessfully", courseName});
+        res.status(200).json({error: false, message: "course created sucessfully", name});
     } catch (error) {
         res.status(400).json({
             error: true,
