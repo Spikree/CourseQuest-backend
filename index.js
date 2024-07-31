@@ -33,7 +33,7 @@ app.use('/login-account',loginAccount);
 app.use('/get-user',getUser);
 app.use('/upload-video', uploadVideo);
 app.use('/delete-video', deleteVideo);
-app.use('create-course',createCourse);
+app.use('/create-course',createCourse);
 
 app.listen(port, () => {
     console.log(`server listening on http://localhost:${port}`);

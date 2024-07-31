@@ -8,7 +8,7 @@ createCourse.post('/',authenticateToken,async(req,res) => {
     const name = req.body.name;
     const description = req.body.description;
     const price = req.body.price;
-    const userId = req.user._id;
+    const userId = req.user.user._id;
 
     const requiredFields = [name, description, price, userId];
     const fieldNames = ["name", "description", "price", "userId"];
