@@ -8,6 +8,10 @@ import getUser from './Routes/getUser.js';
 import uploadVideo from './Routes/uploadVideo.js';
 import deleteVideo from './Routes/deleteVideo.js';
 import createCourse from './Routes/createCourse.js';
+import getAllCourses from './Routes/getAllCourses.js';
+import getCourseById from './Routes/getCourseById.js';
+import getVideos from './Routes/getVideos.js';
+import connectDb from './utils/databaseConnect.js';
 
 dotenv.config();
 
@@ -17,15 +21,6 @@ app.use(cors());
 
 const port = process.env.PORT || 5000;
 
-const connectDb = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_STRING);
-        console.log("connected to db")
-    } catch (error) {
-        console.log("Error connecting to db", error)
-    }
-}
-
 connectDb();
 
 app.use('/create-account',createAccount);
@@ -34,6 +29,9 @@ app.use('/get-user',getUser);
 app.use('/upload-video', uploadVideo);
 app.use('/delete-video', deleteVideo);
 app.use('/create-course',createCourse);
+app.use('/get-all-courses', getAllCourses);
+app.use('/get-course-by-id', getCourseById);
+app.use('/get-videos',getVideos);
 
 app.listen(port, () => {
     console.log(`server listening on http://localhost:${port}`);

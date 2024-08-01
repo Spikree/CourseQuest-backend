@@ -27,7 +27,7 @@ uploadVideo.post('/', authenticateToken,upload.single('video'), async (req,res) 
   const videoDescription = req.body.videoDescription;
   const videoDuration = req.body.videoDuration;
   const videoNumber = req.body.videoNumber;
-  // courseId = req.body.courseId
+  const courseId = req.body.courseId
 
 
   const newVideo = new videoSchema({
@@ -35,11 +35,12 @@ uploadVideo.post('/', authenticateToken,upload.single('video'), async (req,res) 
     video : video,
     videoDescription: videoDescription,
     videoDuration: videoDuration,
-    videoNumber : videoNumber
+    videoNumber : videoNumber,
+    courseId : courseId
   })
 
-  const requiredFields = [videoName,video,videoDescription,videoDuration,videoNumber];
-  const reqFieldsNames = ['videoName','video','videoDescription','videoDuration','videoNumber'];
+  const requiredFields = [videoName,video,videoDescription,videoDuration,videoNumber,courseId];
+  const reqFieldsNames = ['videoName','video','videoDescription','videoDuration','videoNumber','courseId'];
 
   for(var i = 0 ; i < requiredFields.length ; i ++) {
     if(!requiredFields[i]) {
