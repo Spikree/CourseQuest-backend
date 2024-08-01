@@ -2,7 +2,6 @@ import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
 import createAccount from './Routes/createAccount.js';
-import mongoose from 'mongoose';
 import loginAccount from './Routes/loginAccount.js';
 import getUser from './Routes/getUser.js';
 import uploadVideo from './Routes/uploadVideo.js';
@@ -26,9 +25,9 @@ connectDb();
 app.use('/create-account',createAccount);
 app.use('/login-account',loginAccount);
 app.use('/get-user',getUser);
+app.use('/create-course',createCourse);
 app.use('/upload-video', uploadVideo);
 app.use('/delete-video', deleteVideo);
-app.use('/create-course',createCourse);
 app.use('/get-all-courses', getAllCourses);
 app.use('/get-course-by-id', getCourseById);
 app.use('/get-videos',getVideos);

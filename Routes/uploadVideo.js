@@ -27,7 +27,7 @@ uploadVideo.post('/', authenticateToken,upload.single('video'), async (req,res) 
   const videoDescription = req.body.videoDescription;
   const videoDuration = req.body.videoDuration;
   const videoNumber = req.body.videoNumber;
-  const courseId = req.body.courseId
+  const courseId = req.body.courseId;
 
 
   const newVideo = new videoSchema({
