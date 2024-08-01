@@ -1,6 +1,7 @@
 import express from 'express';
 import userSchema from '../Schema/userSchema.js';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt'
 
 const createAccount = express.Router();
 
@@ -25,10 +26,13 @@ createAccount.post("/", async (req,res) => {
         })
     }
 
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password,salt);
+
     const user = new userSchema({
         name,
         email,
-        password
+        password : hashedPassword
     })
 
     await user.save();
