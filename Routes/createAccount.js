@@ -20,7 +20,7 @@ createAccount.post("/", async (req,res) => {
     const isUserPresent = await userSchema.findOne({email: email});
 
     if(isUserPresent) {
-        return res.json({
+        return res.status(400).json({
             error: true,
             message: "a user with this email already exists"
         })
@@ -30,26 +30,35 @@ createAccount.post("/", async (req,res) => {
     const hashedPassword = await bcrypt.hash(password,salt);
 
     const user = new userSchema({
-        name,
+        name,   
         email,
         password : hashedPassword
     })
 
-    await user.save();
+    try {
+        await user.save();
 
-    const accessToken = jwt.sign({
-        user
-    }, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: "36000m"
-    });
+        const accessToken = jwt.sign({
+            user
+        }, process.env.ACCESS_TOKEN_SECRET, {
+            expiresIn: "36000m"
+        });
+    
+        return res.status(200).json({
+            error: false,
+            message: "Account created sucessfully",
+            name,
+            accessToken
+            
+        });
+    } catch (error) {
+        return res.status(400).json({
+            error: true,
+            message : "Error creating account"
+        })
+    }
 
-    return res.json({
-        error: false,
-        message: "Account created sucessfully",
-        name,
-        accessToken
-        
-    });
+
 })
 
 export default createAccount;

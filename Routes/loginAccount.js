@@ -20,7 +20,7 @@ loginAccount.post('/',async(req,res) => {
     const userInfo = await userSchema.findOne({email: email});
 
     if(!userInfo) {
-        return res.json({error: true, message: "user not found"});
+        return res.status(400).json({error: true, message: "user not found"});
     }
 
     const isMatch = await bcrypt.compare(password,userInfo.password);
@@ -33,6 +33,7 @@ loginAccount.post('/',async(req,res) => {
 
         return res.json({
             error: false,
+            message: "logged in sucessfully",
             email,
             accessToken
         })
