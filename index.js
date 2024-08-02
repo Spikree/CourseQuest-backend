@@ -7,10 +7,11 @@ import getUser from './Routes/getUser.js';
 import uploadVideo from './Routes/uploadVideo.js';
 import deleteVideo from './Routes/deleteVideo.js';
 import createCourse from './Routes/createCourse.js';
-import getAllCourses from './Routes/getAllCourses.js';
+import getAllCourses from './Routes/getAllCoursesByUser.js';
 import getCourseById from './Routes/getCourseById.js';
 import getVideos from './Routes/getVideos.js';
 import connectDb from './utils/databaseConnect.js';
+import getAllCoursesByUser from './Routes/getAllCoursesByUser.js';
 
 dotenv.config();
 
@@ -28,9 +29,10 @@ app.use('/get-user',getUser);
 app.use('/create-course',createCourse);
 app.use('/upload-video', uploadVideo);
 app.use('/delete-video', deleteVideo);
-app.use('/get-all-courses', getAllCourses);
+app.use('/get-all-courses', getAllCoursesByUser);
 app.use('/get-course-by-id', getCourseById);
 app.use('/get-videos',getVideos);
+app.use('/get-all-users', getUser);
 
 app.listen(port, () => {
     console.log(`server listening on http://localhost:${port}`);

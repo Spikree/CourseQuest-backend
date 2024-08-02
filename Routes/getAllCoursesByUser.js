@@ -2,9 +2,9 @@ import express from 'express'
 import authenticateToken from '../utils/utils.js';
 import courseSchema from '../Schema/courseSchema.js';
 
-const getAllCourses = express.Router();
+const getAllCoursesByUser = express.Router();
 
-getAllCourses.get('/',authenticateToken, async (req,res) => {
+getAllCoursesByUser.get('/',authenticateToken, async (req,res) => {
     const userId = req.user.user._id;
 
     if(!userId) {
@@ -43,4 +43,4 @@ getAllCourses.get('/',authenticateToken, async (req,res) => {
     }
 });
 
-export default getAllCourses;
+export default getAllCoursesByUser;
