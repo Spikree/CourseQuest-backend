@@ -6,12 +6,12 @@ const getAllCourses = express.Router();
 
 getAllCourses.get('/', authenticateToken, async (req,res) => {
     try {
-        const response = await courseSchema.find();
+        const courses = await courseSchema.find();
         res.status(200).json({
-            error: 200,
+            error: false,
             message : "fetched all the courses",
-            response
-        })
+            courses
+        });
     } catch (error) {
         res.status(400).json({
             error: true,

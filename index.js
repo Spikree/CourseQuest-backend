@@ -35,6 +35,7 @@ app.use('/get-videos',getVideos);
 app.use('/get-all-users', getUser);
 app.use('/get-all-courses', getAllCourses);
 
+
 app.listen(port, () => {
     console.log(`server listening on http://localhost:${port}`);
 });
