@@ -5,7 +5,8 @@ import authenticateToken from '../utils/utils.js';
 const getUser = express.Router();
 
 getUser.get('/',authenticateToken,async(req,res) => {
-    const { user } = req.user;
+    const { user } = req.user || req.user.user;
+
 
     const isUser = await userSchema.findOne({_id: user._id});
 
