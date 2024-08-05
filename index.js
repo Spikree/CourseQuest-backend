@@ -1,6 +1,8 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import cors from 'cors'
+import path from 'path'; 
+import { fileURLToPath } from 'url';
 import createAccount from './Routes/createAccount.js';
 import loginAccount from './Routes/loginAccount.js';
 import getUser from './Routes/getUser.js';
@@ -22,6 +24,11 @@ app.use(cors());
 const port = process.env.PORT || 5000;
 
 connectDb();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use('/videos', express.static(path.join(__dirname, 'uploads')));
 
 app.use('/create-account',createAccount);
 app.use('/login-account',loginAccount);

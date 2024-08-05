@@ -5,7 +5,7 @@ import videoSchema from '../Schema/videoSchema.js';
 const getVideos = express.Router();
 
 getVideos.get('/', authenticateToken, async (req, res) => {
-    const courseId = req.body.courseId;
+    const { courseId } = req.query; 
 
     if(!courseId) {
         return res.status(400).json({error: true, message : "courseId is required"});
@@ -26,6 +26,7 @@ getVideos.get('/', authenticateToken, async (req, res) => {
             videoDescription : video.videoDescription,
             videoNumber: video.videoNumber,
             videoDuration : video.videoDuration,
+            videoUrl: `${req.protocol}://${req.get('host')}/videos/${video.video}`
         }));
 
         return res.status(200).json({
