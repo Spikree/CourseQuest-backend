@@ -7,7 +7,7 @@ const courseSchema = new Schema({
     description: { type: String },
     price: { type: Number },
     userId: { type: Schema.Types.ObjectId, ref: 'userSchema'},
-    // videos: {type: Schema.Types.ObjectId, ref: 'videoSchema'},
+    courseThumbnail : {type: String},
     createdAt: { type: Date, default: Date.now },
     updatedAt: { type: Date, default: Date.now }
 });

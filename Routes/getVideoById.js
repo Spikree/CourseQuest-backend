@@ -20,6 +20,8 @@ getVideoById.get('/',authenticateToken,async(req,res) => {
 
         return res.status(200).json({
             videoName : video.videoName,
+            videoDescription : video.videoDescription,
+            videoNumber: video.videoNumber,
             videoUrl: `${req.protocol}://${req.get('host')}/videos/${video.video}`
         })
     } catch (error) {

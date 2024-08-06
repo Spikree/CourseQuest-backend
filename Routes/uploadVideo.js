@@ -7,7 +7,7 @@ const uploadVideo = express.Router();
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, 'uploads')
+      cb(null, 'uploads');
     },
     filename: function (req, file, cb) {
       const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -21,6 +21,10 @@ const upload = multer({
 
 
 uploadVideo.post('/', authenticateToken,upload.single('video'), async (req,res) => {
+
+  if (!req.file) {
+    return res.status(400).json({ error: true, message: "No file selected, video is required" });
+  }
 
   let video = `${req.file.filename}`;
   const videoName = req.body.videoName;

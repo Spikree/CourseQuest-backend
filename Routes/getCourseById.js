@@ -28,7 +28,8 @@ getCourseById.get('/', authenticateToken, async (req, res) => {
             error: false,
             name: course.name,
             description : course.description,
-            price: course.price
+            price: course.price,
+            thumbnailUrl: `${req.protocol}://${req.get('host')}/thumbnails/${video.video}`
         })
 
     } catch (error) {

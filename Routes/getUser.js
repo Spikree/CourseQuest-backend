@@ -17,7 +17,7 @@ getUser.get('/',authenticateToken,async(req,res) => {
         });
     }
 
-    return res.status(400).json({
+    return res.status(200).json({
         error: false,
         message: "fetched user data sucessfully",
         user : { name : isUser.name, email : isUser.email, _id: isUser._id}
