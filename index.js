@@ -14,6 +14,7 @@ import getCourseById from './Routes/getCourseById.js';
 import getVideos from './Routes/getVideos.js';
 import connectDb from './utils/databaseConnect.js';
 import getAllCourses from './Routes/getAllCourses.js';
+import getVideoById from './Routes/getVideoById.js';
 
 dotenv.config();
 
@@ -39,6 +40,7 @@ app.use('/delete-video', deleteVideo);
 app.use('/get-all-courses-user', getAllCoursesByUser);
 app.use('/get-course-by-id', getCourseById);
 app.use('/get-videos',getVideos);
+app.use('/get-video-by-id',getVideoById);
 app.use('/get-all-users', getUser);
 app.use('/get-all-courses', getAllCourses);
 

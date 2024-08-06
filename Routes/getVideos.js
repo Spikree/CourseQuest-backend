@@ -23,6 +23,7 @@ getVideos.get('/', authenticateToken, async (req, res) => {
 
         const allVideoData = allVideos.map(video => ({
             videoName : video.videoName,
+            videoId : video._id,
             videoDescription : video.videoDescription,
             videoNumber: video.videoNumber,
             videoDuration : video.videoDuration,
